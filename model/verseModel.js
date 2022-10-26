@@ -1,14 +1,16 @@
-import {server, token} from '../etc/api.js';
+import Model from "./model.js";
 
-export async function getVerse(book, chapter, number){
-    try{
-        const text = await server.get(`/api/verses/nvi/${book}/${chapter}/${number}`,
-        {headers: {'Authorization': `Bearer ${token}`}});
-   
-        return JSON.stringify(text.data.text);
-
-    }catch(error){
-        console.log(error.msg)
-        return error;
+export default class VerseModel extends Model {
+    async run(book, chapter, number) {
+        try{
+            const text = await this.server.get(`/api/verses/nvi/${book}/${chapter}/${number}`,
+            {headers: {'Authorization': `Bearer ${this.token}`}});
+       
+            return text.data.text;
+    
+        }catch(error){
+            console.log(error.msg)
+            return error;
+        }
     }
 }

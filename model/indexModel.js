@@ -1,11 +1,8 @@
-import { fileURLToPath } from 'url';
-import path from 'path';
+import Model from "./model.js";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const indexFile = path.join(__dirname, "..", "/public", "index.html");
-
-export function index(){
-    
-    return indexFile;
+export default class IndexModel extends Model{
+    async run(){
+        this.indexFile = this.path.join(this.__dirname, "..", "/public", "index.html");
+        return this.indexFile;
+    }
 }

@@ -1,19 +1,10 @@
-import { server, token } from '../etc/api.js';
-import { TemplateEngine } from 'thymeleaf';
-import { fileURLToPath } from 'url';
-import path from 'path';
+import Model from "./model.js";
 
-export async function getBooks() {
-    try {
-        const __filename = fileURLToPath(import.meta.url);
-        const __dirname = path.dirname(__filename);
-        const indexFile = path.join(__dirname, "..", "/public", "/books.html");
-
-        let templateEngine = new TemplateEngine();
-
-        const data = await server.get(`/api/books`,
-            { headers: { 'Authorization': `Bearer ${token}` } });
-
+export default class BooksModel extends Model{
+    async run(){
+        const data = await this.server.get(`/api/books`,
+            { headers: { 'Authorization': `Bearer ${this.token}` } });
+        this.indexFile = this.path.join(this.__dirname, "..", "/public", "/books.html");
         let booksJson = data.data;
         let booksArray = [];
         
@@ -21,8 +12,7 @@ export async function getBooks() {
             booksArray.push(booksJson[i].name);
         }
 
-        let result = await templateEngine.processFile(indexFile, { books: booksJson });
-
+        let result = await this.templateEngine.processFile(this.indexFile, { books: booksJson });
         return result;
 
     } catch (error) {

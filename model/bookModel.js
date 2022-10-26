@@ -1,32 +1,24 @@
-import { server, token } from '../etc/api.js';
-import { TemplateEngine } from 'thymeleaf';
-import { fileURLToPath } from 'url';
-import path from 'path';
+import Model from "./model.js";
 
-export async function getBook(abbrev) {
-    try {
-        const __filename = fileURLToPath(import.meta.url);
-        const __dirname = path.dirname(__filename);
-        const indexFile = path.join(__dirname, "..", "/public", "/book.html");
-
-        let templateEngine = new TemplateEngine();
-
-        const data = await server.get(`/api/books/${abbrev}`,
-            { headers: { 'Authorization': `Bearer ${token}` } });
-
-        let bookJson = data.data;
-        let versesNumberArray = [];
-        
-        for (let i = 1; i < bookJson.chapters; i++) {
-            versesNumberArray.push(i);
+export default class BookModel extends Model{
+    async run(abbrev){
+        try {
+            const data = await this.server.get(`/api/books/${abbrev}`,
+                { headers: { 'Authorization': `Bearer ${this.token}` } });
+                
+            let bookJson = data.data;
+            let versesNumberArray = [];
+            
+            for (let i = 1; i < bookJson.chapters; i++) {
+                versesNumberArray.push(i);
+            }
+            
+            let result = await this.templateEngine.processFile(this.indexFile, {bookJson: bookJson, versesNumber: versesNumberArray });
+            return result;
+    
+        } catch (error) {
+            console.log(error.msg)
+            return error;
         }
-
-        let result = await templateEngine.processFile(indexFile, {bookJson: bookJson, versesNumber: versesNumberArray });
-
-        return result;
-
-    } catch (error) {
-        console.log(error.msg)
-        return error;
     }
 }
