@@ -5,6 +5,9 @@ export default class BookModel extends Model{
         try {
             const data = await this.server.get(`/api/books/${abbrev}`,
                 { headers: { 'Authorization': `Bearer ${this.token}` } });
+
+            this.contentFilePath = this.path.join(this.__dirname, "..", "/src", "/private", "book.html");
+            this.contentFileText = this.fs.readFileSync(this.contentFilePath, 'utf-8');
                 
             let bookJson = data.data;
             let versesNumberArray = [];
@@ -13,8 +16,10 @@ export default class BookModel extends Model{
                 versesNumberArray.push(i);
             }
             
-            let result = await this.templateEngine.processFile(this.indexFile, {bookJson: bookJson, versesNumber: versesNumberArray });
-            return result;
+            let content = {content: this.contentFileText, bookJson: bookJson, versesNumber: versesNumberArray };
+           
+            let htmlFile = this.getHtmlFile(content); 
+            return htmlFile;
     
         } catch (error) {
             console.log(error.msg)

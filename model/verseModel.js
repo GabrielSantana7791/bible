@@ -6,7 +6,15 @@ export default class VerseModel extends Model {
             const text = await this.server.get(`/api/verses/nvi/${book}/${chapter}/${number}`,
             {headers: {'Authorization': `Bearer ${this.token}`}});
        
-            return text.data.text;
+            this.contentFilePath = this.path.join(this.__dirname, "..", "/src", "/private", "verse.html");
+            this.contentFileText = this.fs.readFileSync(this.contentFilePath, 'utf-8');
+
+            let verse = text.data.text;
+
+            let content = { content: this.contentFileText, verse: verse}
+
+            let htmlFile = this.getHtmlFile(content);        
+            return htmlFile;
     
         }catch(error){
             console.log(error.msg)
