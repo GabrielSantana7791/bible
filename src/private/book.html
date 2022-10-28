@@ -1,1 +1,9 @@
-<div><p thjs:each="verseNumber: ${versesNumber}"><a thjs:text="${verseNumber}" thjs:href="${bookJson.abbrev.pt} + '/' + ${verseNumber}"></a></p></div>
+<div><p><a thjs:text="${verseNumber}" thjs:href="${bookJson.abbrev.pt} + '/' + ${verseNumber}"></a></p></div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-2" thjs:each="verseNumber: ${versesNumber}"><p><a thjs:text="${verseNumber}"
+            thjs:href="${bookJson.abbrev.pt} + '/' + ${verseNumber}"></a></p></div>
+    </div>
+</div>

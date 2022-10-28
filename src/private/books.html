@@ -1,1 +1,6 @@
-<div> <p thjs:each="book: ${books}"><a thjs:text="${book.name}" thjs:href="'/bible/' + ${book.abbrev.pt}"></a></p></div>
+<div class="container">
+    <div class="row">
+        <div class="col-4 col-md-2" thjs:each="book: ${books}"><p><a thjs:text="${book.name}" 
+            thjs:href="'/bible/' + ${book.abbrev.pt}"></a></p></div>
+    </div>
+</div>
