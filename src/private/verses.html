@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <h2 id="chapter-title" thjs:text="${data.book.name} + ' capítulo: ' + ${data.chapter.number}"></h2>
+        <h4 id="chapter-title" thjs:text="${data.book.name} + ' capítulo: ' + ${data.chapter.number}"></h4>
     </div>
     <div thjs:each="verse: ${data.verses}">
         <p thjs:text="${verse.number} + '.' + ' ' + ${verse.text}"></p>
