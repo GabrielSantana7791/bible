@@ -9,13 +9,18 @@ export default class BooksModel extends Model{
         this.contentFileText = this.fs.readFileSync(this.contentFilePath, 'utf-8');
 
         let booksJson = data.data;
-        let booksArray = [];
+        let booksVT = [];
+        let booksNT = [];
 
         for (let i = 0; i < booksJson.length; i++) {
-            booksArray.push(booksJson[i].name);
+            if(booksJson[i].testament == 'VT'){
+                booksVT.push (booksJson[i]);
+            }else{
+                booksNT.push(booksJson[i]);
+            }
         }
 
-        let content = { content: this.contentFileText, books: booksJson };
+        let content = { content: this.contentFileText, booksVT: booksVT, booksNT: booksNT };
 
         let htmlFile = this.getHtmlFile(content);
         return htmlFile;

@@ -1,6 +1,14 @@
 <div class="container">
-    <div class="row">
-        <div class="col-4 col-md-2" thjs:each="book: ${books}"><p><a thjs:text="${book.name}" 
-            thjs:href="'/bible/' + ${book.abbrev.pt}"></a></p></div>
+    <div id="vt" class="row">
+        <h2 id="testament-title">Velho testamento</h2>
+        <div class="col-4 col-md-2" thjs:each="book: ${booksVT}">
+            <p><a thjs:text="${book.name}" thjs:href="'/bible/' + ${book.abbrev.pt}"></a></p>
+        </div>
+    </div>
+    <div id="nt" class="row">
+        <h2 id="testament-title">Novo testamento</h2>
+        <div class="col-4 col-md-2" thjs:each="book: ${booksNT}">
+            <p><a thjs:text="${book.name}" thjs:href="'/bible/' + ${book.abbrev.pt}"></a></p>
+        </div>
     </div>
 </div>

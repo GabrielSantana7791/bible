@@ -27,6 +27,15 @@ a:hover {
  * Base structure
  */
 
+ #testament-title{
+  padding-top: 30px;
+  padding-bottom: 15px;
+ }
+
+ #chapter-title{
+  padding-bottom: 15px;
+ }
+
 html,
 body {
   height: 100%;
