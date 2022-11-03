@@ -12,8 +12,8 @@ export default class BookModel extends Model{
             let bookJson = data.data;
             let versesNumberArray = [];
             
-            for (let i = 1; i < bookJson.chapters; i++) {
-                versesNumberArray.push(i);
+            for (let i=0; i < bookJson.chapters; i++) {
+                versesNumberArray.push(i+1);
             }
             
             let content = {content: this.contentFileText, bookJson: bookJson, versesNumber: versesNumberArray };
