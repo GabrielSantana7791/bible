@@ -1,4 +1,4 @@
-import { server, token } from '../etc/api.js';
+import { server, token } from '../etc/classes/api.js';
 import { TemplateEngine } from 'thymeleaf';
 import { fileURLToPath } from 'url';
 import fs from 'fs'
