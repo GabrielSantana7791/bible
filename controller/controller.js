@@ -6,6 +6,7 @@ import BookModel from '../model/bookModel.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import express from 'express';
+import DevocionalModel from '../model/devocionalModel.js';
 
 export function run(app) {
     const __filename = fileURLToPath(import.meta.url);
@@ -18,6 +19,13 @@ export function run(app) {
         const index = await indexModel.run();
 
         res.send(index);
+    })
+
+    app.get('/devocional', async (req, res) => {
+        const devocionalModel = new DevocionalModel();
+        const devocional = await devocionalModel.run();
+
+        res.send(devocional);
     })
 
     app.get('/bible', async (req, res) => {

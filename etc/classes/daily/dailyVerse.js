@@ -7,13 +7,15 @@ export default class DailyVerse extends Daily {
         super(dailyFile);
     }
 
+    getDailyText() {
+        return this.dailyData.text;
+    }
+
     async setNewDailyText() {
         const data = await DailyVerseManager.getNewVerse();
 
-        const dailyText = `"${data.text}" ${data.book.name} ${data.chapter}:${data.number}`;
-        data.text;
-        this.setDailyText(dailyText);
+        this.dailyData.verse = data;
 
-        return dailyText;
+        this.setDailyData();
     }
 }

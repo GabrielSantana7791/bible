@@ -6,35 +6,37 @@ let __filename = fileURLToPath(import.meta.url);
 let __dirname = path.dirname(__filename);
 
 export default class Daily {
-    constructor(daily, dailyFile) {
-        this.dailyFile = dailyFile;
-        this.dailyVersePath = path.join(__dirname, '..', '..', '/others', daily);
-        this.dailyVerseData = JSON.parse(fs.readFileSync(this.dailyVersePath, 'utf-8'));
+    constructor(dailyFile) {
+        this.fs = fs;
+        this.path = path;
+        this.dailyFile = dailyFile;//file name
+        this.dailyPath = path.join(__dirname, '..', '..', '/others', dailyFile);
+        this.dailyData = JSON.parse(fs.readFileSync(this.dailyPath, 'utf-8'));
     }
 
     setNewDailyText() {
         //implement
     }
 
+    async setNewDailyText(text) {
+        //implement
+    }
+
     getDailyText() {
-        return this.dailyVerseData.text;
+        //implement
     }
 
     getDailyTime() {
-        return this.dailyVerseData.time;
-    }
-
-    async setDailyText(text) {
-        this.dailyVerseData.text = text;
-
-        let objStringify = JSON.stringify(this.dailyVerseData);
-        fs.writeFileSync(path.join(this.dailyVersePath), objStringify, 'utf-8');
+        return this.dailyData.settings.time;
     }
 
     setDailyTime(time) {
-        this.dailyVerseData.time = time;
+        this.dailyData.settings.time = time;
+        setDailyData();
+    }
 
-        let objStringify = JSON.stringify(this.dailyVerseData);
-        fs.writeFileSync(path.join(this.dailyVersePath), objStringify, 'utf-8');
+    setDailyData() {
+        let objStringify = JSON.stringify(this.dailyData);
+        fs.writeFileSync(path.join(this.dailyPath), objStringify, 'utf-8');
     }
 }

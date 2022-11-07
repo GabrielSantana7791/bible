@@ -1,6 +1,6 @@
 export default async function run(daily) {
     let now = new Date();
-    let dailyTime = daily.getDailyTime();
+    let dailyTime = daily.getDailyTime().hour;
 
     let dailyTimeMinusNow = new Date(now.getFullYear(), now.getMonth(), now.getDate(), dailyTime, 0, 0, 0) - now;
     let nextdailyTimeMilli;

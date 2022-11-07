@@ -1,0 +1,1 @@
+{"settings":{"actual":0,"time":{"month":"0","week":"0","day":"1"}},"devocional":[{"title":"Sermão do monte","summary":"Texto resumido blabla","text":"Texto completo blablabla"},{"title":"Novo começo","summary":"Texto resumido blabla","text":"Texto completo blabla..."}]}
