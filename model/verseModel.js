@@ -11,7 +11,9 @@ export default class VerseModel extends Model {
 
             let verse = text.data.text;
 
-            let content = { content: this.contentFileText, verse: verse}
+            this.pageTitle = `${text.data.book.name} ${text.data.chapter}:${text.data.number}`
+
+            let content = { pageTitle: this.pageTitle, content: this.contentFileText, verse: verse}
 
             let htmlFile = this.getHtmlFile(content);        
             return htmlFile;

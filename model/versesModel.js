@@ -9,7 +9,9 @@ export default class VersesModel extends Model {
             this.contentFilePath = this.path.join(this.__dirname, "..", "/src", "/private", "verses.html");
             this.contentFileText = this.fs.readFileSync(this.contentFilePath, 'utf-8');
 
-            let content = { content: this.contentFileText, data: data.data }
+            this.pageTitle = data.data.book.name;
+
+            let content = { pageTitle: this.pageTitle, content: this.contentFileText, data: data.data }
 
             let htmlFile = this.getHtmlFile(content);
             return htmlFile;

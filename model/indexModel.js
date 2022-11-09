@@ -35,7 +35,10 @@ export default class IndexModel extends Model {
 
         let bible = { content: this.contentFileText, booksVT: booksVT, booksNT: booksNT };
 
+        this.pageTitle = "Verso Diário";
+
         let content = {
+            pageTitle: this.pageTitle,
             content: this.contentFileText, videoUrl: videoData, dailyVerse: verseText,
             devocional: devocionalText,
             bible: bible

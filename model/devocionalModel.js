@@ -10,7 +10,9 @@ export default class DevocionalModel extends Model {
             let devocionalData = JSON.parse(this.fs.readFileSync(devocionalPath, 'utf-8'));
             let devocional = devocionalData.devocional[devocionalData.settings.actual];
 
-            let content = { content: this.contentFileText, devocional: devocional}
+            this.pageTitle = devocional.title;
+
+            let content = { pageTitle: this.pageTitle, content: this.contentFileText, devocional: devocional}
 
             let htmlFile = this.getHtmlFile(content);        
             return htmlFile;

@@ -15,8 +15,10 @@ export default class BookModel extends Model{
             for (let i=0; i < bookJson.chapters; i++) {
                 versesNumberArray.push(i+1);
             }
+
+            this.pageTitle = bookJson.name;
             
-            let content = {content: this.contentFileText, bookJson: bookJson, versesNumber: versesNumberArray };
+            let content = { pageTitle: this.pageTitle, content: this.contentFileText, bookJson: bookJson, versesNumber: versesNumberArray };
            
             let htmlFile = this.getHtmlFile(content); 
             return htmlFile;

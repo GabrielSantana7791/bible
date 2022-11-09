@@ -20,7 +20,9 @@ export default class BooksModel extends Model{
             }
         }
 
-        let content = { content: this.contentFileText, booksVT: booksVT, booksNT: booksNT };
+        this.pageTitle = "Bíblia";
+
+        let content = { pageTitle: this.pageTitle, content: this.contentFileText, booksVT: booksVT, booksNT: booksNT };
 
         let htmlFile = this.getHtmlFile(content);
         return htmlFile;

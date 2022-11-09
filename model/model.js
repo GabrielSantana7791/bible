@@ -16,6 +16,7 @@ export default class Model{
         this.token = token;
         this.templateEngine = new TemplateEngine();
         this.fs = fs;
+        this.pageTitle = "Default title";
     }
 
     getHtmlFile(content){
