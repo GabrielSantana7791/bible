@@ -12,12 +12,35 @@ export default class IndexModel extends Model {
         let verseData = await JSON.parse(this.fs.readFileSync(versePath, 'utf-8')).verse;
         let verseText = `"${verseData.text}" ${verseData.book.name} ${verseData.chapter}:${verseData.number}`;
 
-        //
+
         const devocionalPath = this.path.join(this.__dirname, '..', '/etc', 'others', 'devocional.txt');
         let devocional = await JSON.parse(this.fs.readFileSync(devocionalPath, 'utf-8'));
         let devocionalText = devocional.devocional[devocional.settings.actual]
 
-        let content = { content: this.contentFileText, videoUrl: videoData, dailyVerse: verseText, devocional: devocionalText };
+        //get bible JSON from API
+        const data = await this.server.get(`/api/books`,
+            { headers: { 'Authorization': `Bearer ${this.token}` } });
+
+        let booksJson = data.data;
+        let booksVT = [];
+        let booksNT = [];
+
+        for (let i = 0; i < booksJson.length; i++) {
+            if (booksJson[i].testament == 'VT') {
+                booksVT.push(booksJson[i]);
+            } else {
+                booksNT.push(booksJson[i]);
+            }
+        }
+
+        let bible = { content: this.contentFileText, booksVT: booksVT, booksNT: booksNT };
+
+        let content = {
+            content: this.contentFileText, videoUrl: videoData, dailyVerse: verseText,
+            devocional: devocionalText,
+            bible: bible
+        };
+
         let htmlFile = this.getHtmlFile(content);
 
         return htmlFile;

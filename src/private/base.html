@@ -1,35 +1,38 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset='utf-8'>
     <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='/bootstrap.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='/css.css'>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
-    <header class="masthead mb-auto">
-        <div class="inner">
-            <h3 class="masthead-brand"><a class="text-decoration-none" href="/"> Biblia online</a></h3>
-            <nav class="nav nav-masthead justify-content-center">
-                <a class="nav-link active" href="/bible">Bíblia</a>
-                <a class="nav-link active" href="#">Sobre mim</a>
-            </nav>
+<header>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-primary text-center">
+        <a class="navbar-brand" href="/">Verso diário</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/bible">Bíblia</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/devocional">Devocional</a>
+                </li>
+            </ul>
         </div>
-    </header>
+    </nav>
+</header>
+<div class="container">
     <div id="tes" thjs:utext="${content}"></div>
-    <footer class="mastfoot mt-auto">
-        <div class="inner">
-            <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a
-                    href="https://twitter.com/mdo">@mdo</a>.</p>
-        </div>
-    </footer>
-
-
-    <script src="/bootstrap.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-
-    <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"></script>
-    <script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
 </html>
