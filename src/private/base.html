@@ -6,9 +6,10 @@
     <title thjs:text="${pageTitle}"></title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css.css" rel="stylesheet">
 </head>
 <header>
-    <nav class="navbar navbar-expand-sm navbar-dark bg-primary text-center">
+    <nav class="navbar navbar-expand-sm navbar-light bg-warning text-center">
         <a class="navbar-brand" href="/">Verso diário</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,9 +30,9 @@
         </div>
     </nav>
 </header>
-<div class="container">
-    <div id="tes" thjs:utext="${content}"></div>
-</div>
+<body class="bg-dark text-light">
+    <div class="container" thjs:utext="${content}"></div>
+</body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 

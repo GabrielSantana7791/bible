@@ -1,9 +1,17 @@
 <div class="row">
-    <h5 cla><a thjs:href="'/bible/' + ${data.book.abbrev.pt}">Voltar</a></h5>
+    <div class="col">
+        <h5 cla><a thjs:href="'/bible/' + ${data.book.abbrev.pt}">Voltar</a></h5>
+    </div>
+</div>
+<div class="row pt-5 pb-3">
+    <div class="col">
+        <h4 id="chapter-title" thjs:text="${data.book.name} + ' capítulo: ' + ${data.chapter.number}"></h4>
+    </div>
 </div>
 <div class="row">
-    <h4 id="chapter-title" thjs:text="${data.book.name} + ' capítulo: ' + ${data.chapter.number}"></h4>
-</div>
-<div thjs:each="verse: ${data.verses}">
-    <p thjs:text="${verse.number} + '.' + ' ' + ${verse.text}"></p>
+    <div class="col">
+        <div thjs:each="verse: ${data.verses}">
+            <p thjs:text="${verse.number} + '.' + ' ' + ${verse.text}"></p>
+        </div>
+    </div>
 </div>
