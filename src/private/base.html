@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 
 <head>
     <meta charset='utf-8'>
     <title thjs:text="${pageTitle}"></title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <meta id="description" name="description" content="Ler a bíblia sagrada, versículo diário e a oração do dia">
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css.css" rel="stylesheet">
 </head>
@@ -15,13 +16,13 @@
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse text-left" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto ml-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="/bible">Bíblia</a>
+                    <a class="nav-link" href="/biblia">Bíblia</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="/devocional">Devocional</a>
@@ -31,7 +32,7 @@
     </nav>
 </header>
 <body class="bg-dark text-light">
-    <div class="container" thjs:utext="${content}"></div>
+    <div class="container pt-3" thjs:utext="${content}"></div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>

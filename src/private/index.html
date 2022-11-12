@@ -1,3 +1,5 @@
+<meta id="description" name="description" content="${description}">
+<h1 class="" style="font-size: 30px;">Bíblia online - Versículo e oração diária</h1>
 <div id="main" class="pb-5 border-bottom">
     <div class="row justify-content-center">
         <div class="col-md-12 col-lg-8">
@@ -37,7 +39,7 @@
     </div>
     <div id="vt" class="row">
         <div class="col-4 col-md-2" thjs:each="book: ${bible.booksVT}">
-            <p><a thjs:text="${book.name}" thjs:href="'/bible/' + ${book.abbrev.pt}"></a></p>
+            <p><a thjs:text="${book.name}" thjs:href="'/biblia/' + ${book.abbrev.pt}"></a></p>
         </div>
     </div>
     <div id="nt" class="row pt-5 pb-3">
@@ -47,7 +49,7 @@
     </div>
     <div class="row">
         <div class="col-4 col-md-2" thjs:each="book: ${bible.booksNT}">
-            <p><a thjs:text="${book.name}" thjs:href="'/bible/' + ${book.abbrev.pt}"></a></p>
+            <p><a thjs:text="${book.name}" thjs:href="'/biblia/' + ${book.abbrev.pt}"></a></p>
         </div>
     </div>
 </div>

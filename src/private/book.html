@@ -1,13 +1,15 @@
-<div class="row">
+<div class="row pb-2">
     <div class="col">
-        <h5 cla><a href="/bible">Voltar</a></h5>
+        <h1 thjs:text="${bookJson.name}"></h1>
     </div>
 </div>
-<div class="row pt-5 pb-3">
+
+<div class="row pb-5">
     <div class="col">
-        <h4 thjs:text="${bookJson.name}"></h4>
+        <h5><a href="/biblia">Voltar</a></h5>
     </div>
 </div>
+
 <div class="row">
     <div class="col-2" thjs:each="verseNumber: ${versesNumber}">
         <p><a thjs:text="${verseNumber}" thjs:href="${bookJson.abbrev.pt} + '/' + ${verseNumber}"></a></p>

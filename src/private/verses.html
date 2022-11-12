@@ -1,11 +1,11 @@
-<div class="row">
+<div class="row pb-2">
     <div class="col">
-        <h5 cla><a thjs:href="'/bible/' + ${data.book.abbrev.pt}">Voltar</a></h5>
+        <h1 id="chapter-title" thjs:text="${data.book.name} + ' capítulo: ' + ${data.chapter.number}"></h1>
     </div>
 </div>
-<div class="row pt-5 pb-3">
+<div class="row pb-5">
     <div class="col">
-        <h4 id="chapter-title" thjs:text="${data.book.name} + ' capítulo: ' + ${data.chapter.number}"></h4>
+        <h5 cla><a thjs:href="'/biblia/' + ${data.book.abbrev.pt}">Voltar</a></h5>
     </div>
 </div>
 <div class="row">

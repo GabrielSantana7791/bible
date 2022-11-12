@@ -40,7 +40,7 @@ export function run(app) {
 
     })
 
-    app.get('/bible', async (req, res) => {
+    app.get('/biblia', async (req, res) => {
         if (!req.secure) {
             res.redirect("https://" + req.headers.host + req.url);
 
@@ -51,7 +51,7 @@ export function run(app) {
         }
     })
 
-    app.get('/bible/:abbrev', async (req, res) => {
+    app.get('/biblia/:abbrev', async (req, res) => {
         if (!req.secure) {
             res.redirect("https://" + req.headers.host + req.url);
 
@@ -63,7 +63,7 @@ export function run(app) {
 
     })
 
-    app.get('/bible/:abbrev/:chapter/', async (req, res) => {
+    app.get('/biblia/:abbrev/:chapter/', async (req, res) => {
         if (!req.secure) {
             res.redirect("https://" + req.headers.host + req.url);
 
@@ -75,7 +75,7 @@ export function run(app) {
 
     })
 
-    app.get('/bible/:book/:chapter/:number', async (req, res) => {
+    app.get('/biblia/:book/:chapter/:number', async (req, res) => {
         if (!req.secure) {
             res.redirect("https://" + req.headers.host + req.url);
 

@@ -1,11 +1,16 @@
-<div class="row pb-3">
+<div class="row">
+    <div class="col">
+        <h1 class="" style="font-size: 30px;">Capítulos da biblia versão NVI</h1>
+    </div>
+</div>
+<div class="row pb-3 pt-5">
     <div class="col">
         <h4 id="testament-title">Velho testamento</h4>
     </div>
 </div>
 <div id="vt" class="row">
     <div class="col-4 col-md-2" thjs:each="book: ${booksVT}">
-        <p><a thjs:text="${book.name}" thjs:href="'/bible/' + ${book.abbrev.pt}"></a></p>
+        <p><a thjs:text="${book.name}" thjs:href="'/biblia/' + ${book.abbrev.pt}"></a></p>
     </div>
 </div>
 <div id="nt" class="row pt-5 pb-3">
@@ -15,6 +20,6 @@
 </div>
 <div class="row">
     <div class="col-4 col-md-2" thjs:each="book: ${booksNT}">
-        <p><a thjs:text="${book.name}" thjs:href="'/bible/' + ${book.abbrev.pt}"></a></p>
+        <p><a thjs:text="${book.name}" thjs:href="'/biblia/' + ${book.abbrev.pt}"></a></p>
     </div>
 </div>
