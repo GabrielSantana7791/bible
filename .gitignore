@@ -1,3 +1,5 @@
 node_modules/
 /etc/others/token.txt
-/etc/others/ssl/
+/etc/others/ssl/ca.crt
+/etc/others/ssl/code.crt
+/etc/others/ssl/code.key

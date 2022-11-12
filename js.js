@@ -11,11 +11,12 @@ app.listen(80);
 let httpsSever = https;
 
 httpsSever.createServer({
-    cert: fs.readFileSync("./etc/others/ssl/code.crt"),
-    key: fs.readFileSync("./etc/others/ssl/code.key")
+    cert: fs.readFileSync("./etc/others/ssl/code.crt", "utf8"),
+    ca: fs.readFileSync("./etc/others/ssl/ca.crt", "utf8"),
+    key: fs.readFileSync("./etc/others/ssl/code.key", "utf8")
+   
     
 }, app).listen(443);
-
 run(app);
 
 let dailyVerse = new DailyVerse();
