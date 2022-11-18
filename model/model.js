@@ -9,6 +9,7 @@ export default class Model{
         this.__filename = fileURLToPath(import.meta.url);
         this.__dirname = path.dirname(this.__filename);
         this.baseFile = path.join(this.__dirname, "..", "/src", "/private", "/base.html");
+        this.errorFile = fs.readFileSync(path.join(this.__dirname, "..", "/src", "/private", "/404.html"));
         this.contentFilePath = '';
         this.contentFileText = '';
         this.path = path;

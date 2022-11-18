@@ -18,8 +18,12 @@ export default class DevocionalModel extends Model {
             return htmlFile;
     
         }catch(error){
-            console.log(error.msg)
-            return error;
+            console.log(error)
+
+            let content = { pageTitle: "Erro 404", msg: "", content: this.errorFile };
+
+            let htmlFile = this.getHtmlFile(content); 
+            return htmlFile;
         }
     }
 }
