@@ -5,7 +5,7 @@
         <div class="col-md-12 col-lg-8">
             <div class="text-center">
                 <div class="embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item" thjs:src="${videoUrl}" allow="accelerometer;
+                    <iframe class="embed-responsive-item" thjs:src="${videoUrl.url}" allow="accelerometer;
                          autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen></iframe>
                 </div>
@@ -16,7 +16,8 @@
         <div class="col-12">
             <div id="dailyVerse">
                 <h3 class="cover-heading">Verso do dia</h3>
-                <p class="lead" thjs:text='${dailyVerse}'></p>
+                <p class="lead" thjs:text="${dailyVerse.text} + ' — ' + ${dailyVerse.name} + 
+                ' ' + ${dailyVerse.chapter} + ':' + ${dailyVerse.number}"></p>
             </div>
         </div>
     </div>

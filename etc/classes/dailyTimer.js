@@ -1,8 +1,9 @@
+//apenas dailyVerse... Ainda
 export default async function run(daily) {
     let now = new Date();
 
-    let dailyTime = daily.getDailyTime().hour;
-    let dailyLastDay = daily.getDailyTime().lastDay;
+    let dailyTime = await daily.getDailyTime();
+    let dailyLastDay = await daily.getLastChange().getDate;
 
     let dailyTimeMinusNow = new Date(now.getFullYear(), now.getMonth(), now.getDate(), dailyTime, 0, 0, 0) - now;
     let nextdailyTimeMilli;
@@ -19,5 +20,5 @@ export default async function run(daily) {
 }
 
 function change(daily) {
-    daily.setNewDailyText();
+    daily.setNewDailyVerse();
 }

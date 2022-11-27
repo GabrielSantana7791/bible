@@ -2,8 +2,13 @@ import express from 'express'
 import {run} from './controller/controller.js'
 import dailyTimer  from './etc/classes/dailyTimer.js'
 import DailyVerse from './etc/classes/daily/dailyVerse.js';
+import { dbConnection } from './etc/classes/db.js';
 import https from 'https';
 import fs from 'fs';
+
+dbConnection.connect('versodiario', 'root', null, 'localhost');
+
+const [result] = await dbConnection.getCon().query (`SELECT COUNT(id) AS length FROM daily_verse;`);
 
 const app = express();
 app.listen(80);
