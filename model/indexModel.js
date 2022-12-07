@@ -17,7 +17,7 @@ export default class IndexModel extends Model {
 
             //video; verso; devocional pelo DB;
             const [videoURL] = await dailyVideo.getDailyVideo();
-            const [verse] = await dailyVerse.getDailyVerse();
+            const verse = await dailyVerse.getDailyVerse();
             const [devocional] = await dailyDevocional.getDailyDevocional();
 
 
@@ -25,9 +25,9 @@ export default class IndexModel extends Model {
             const data = await this.server.get(`/api/books`,
                 { headers: { 'Authorization': `Bearer ${this.token}` } });
 
-            let booksJson = data.data;
-            let booksVT = [];
-            let booksNT = [];
+            const booksJson = data.data;
+            const booksVT = [];
+            const booksNT = [];
 
             for (let i = 0; i < booksJson.length; i++) {
                 if (booksJson[i].testament == 'VT') {
@@ -37,25 +37,25 @@ export default class IndexModel extends Model {
                 }
             }
 
-            let bible = { content: this.contentFileText, booksVT: booksVT, booksNT: booksNT };
+            const bible = { content: this.contentFileText, booksVT: booksVT, booksNT: booksNT };
 
-            let content = {
+            const content = {
                 pageTitle: this.pageTitle,
                 content: this.contentFileText, videoUrl: videoURL, dailyVerse: verse,
                 devocional: devocional,
                 bible: bible
             };
 
-            let htmlFile = this.getHtmlFile(content);
+            const htmlFile = this.getHtmlFile(content);
 
             return htmlFile;
 
         } catch (error) {
             console.log(error)
 
-            let content = { pageTitle: "Erro 404", msg: "", content: this.errorFile };
+            const content = { pageTitle: "Erro 404", msg: "", content: this.errorFile };
 
-            let htmlFile = this.getHtmlFile(content);
+            const htmlFile = this.getHtmlFile(content);
             return htmlFile;
         }
     }

@@ -1,4 +1,5 @@
 import { dbConnection } from '../db.js';
+import { server, token } from '../api.js';
 
 export default class DailyVerse {
     constructor() {
@@ -6,11 +7,14 @@ export default class DailyVerse {
     }
 
     async getDailyVerse() {
-        const query = `SELECT daily_verse.* FROM daily_verse JOIN daily_verse_timer
-        ON daily_verse_timer.daily_verse = daily_verse.id;`;
+        const query = `SELECT * FROM getDailyVerse;`;
 
         const [result] = await this.db.query(query);
-        return result;
+
+        const verse = await server.get(`/api/verses/nvi/${result[0].abbrev}/${result[0].chapter}/${result[0].number}`,
+        { headers: { 'Authorization': `Bearer ${token}` } });
+        
+        return verse.data;
     }
 
     async setNewDailyVerse() {

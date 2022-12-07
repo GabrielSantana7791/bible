@@ -9,19 +9,19 @@ export default class VersesModel extends Model {
             this.contentFilePath = this.path.join(this.__dirname, "..", "/src", "/private", "verses.html");
             this.contentFileText = this.fs.readFileSync(this.contentFilePath, 'utf-8');
 
-            this.pageTitle = data.data.book.name;
+            this.pageTitle = `${data.data.book.name} - ${data.data.chapter.number}`;
 
-            let content = { pageTitle: this.pageTitle, content: this.contentFileText, data: data.data }
+            const content = { pageTitle: this.pageTitle, content: this.contentFileText, data: data.data }
 
-            let htmlFile = this.getHtmlFile(content);
+            const htmlFile = this.getHtmlFile(content);
             return htmlFile;
 
         } catch (error) {
             console.log(error)
 
-            let content = { pageTitle: "Erro 404", msg: "", content: this.errorFile };
+            const content = { pageTitle: "Erro 404", msg: "", content: this.errorFile };
 
-            let htmlFile = this.getHtmlFile(content); 
+            const htmlFile = this.getHtmlFile(content); 
             return htmlFile;
         }
     }
