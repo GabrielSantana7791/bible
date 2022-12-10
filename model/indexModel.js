@@ -2,13 +2,10 @@ import Model from "./model.js";
 import DailyVerse from "../etc/classes/daily/dailyVerse.js";
 import DailyVideo from "../etc/classes/daily/dailyVideo.js";
 import DailyDevocional from "../etc/classes/daily/dailyDevocional.js";
-import { VisitCount } from "../etc/classes/visitCount.js";
 
 export default class IndexModel extends Model {
     async run() {
         try {
-            VisitCount.add();
-            
             //UPDATE: instanciar apenas uma vez
             const dailyVerse = new DailyVerse();
             const dailyVideo = new DailyVideo();

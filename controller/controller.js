@@ -7,84 +7,104 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import express from 'express';
 import DevocionalModel from '../model/devocionalModel.js';
+import { VisitCount } from '../etc/classes/visitCount.js';
 
 export function run(app) {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    app.use(express.static(path.join(__dirname, '..', 'src', '/public')));
+    try {
+        app.use(express.static(path.join(__dirname, '..', 'src', '/public')));
 
-    app.get('/', async (req, res) => {
-        if (!req.secure) {
-            res.redirect("https://" + req.headers.host + req.url);
+        app.get('/', async (req, res) => {
+            if (!req.secure) {
+                res.redirect("https://" + req.headers.host + req.url);
 
-        } else {
-            const indexModel = new IndexModel();
-            const index = await indexModel.run();
+            } else {
+                VisitCount.add(req);
 
-            res.send(index);
-        }
+                const indexModel = new IndexModel();
+                const index = await indexModel.run();
 
-    })
 
-    app.get('/devocional', async (req, res) => {
-        if (!req.secure) {
-            res.redirect("https://" + req.headers.host + req.url);
+                res.send(index);
+            }
 
-        } else {
-            const devocionalModel = new DevocionalModel();
-            const devocional = await devocionalModel.run();
+        })
 
-            res.send(devocional);
-        }
+        app.get('/devocional', async (req, res) => {
+            if (!req.secure) {
+                res.redirect("https://" + req.headers.host + req.url);
 
-    })
+            } else {
+                VisitCount.add(req);
 
-    app.get('/biblia', async (req, res) => {
-        if (!req.secure) {
-            res.redirect("https://" + req.headers.host + req.url);
+                const devocionalModel = new DevocionalModel();
+                const devocional = await devocionalModel.run();
 
-        } else {
-            const booksModel = new BooksModel();
-            const books = await booksModel.run();
-            res.send(books);
-        }
-    })
+                res.send(devocional);
+            }
 
-    app.get('/biblia/:abbrev', async (req, res) => {
-        if (!req.secure) {
-            res.redirect("https://" + req.headers.host + req.url);
+        })
 
-        } else {
-            const bookModel = new BookModel();
-            const book = await bookModel.run(req.params.abbrev);
-            res.send(book);
-        }
+        app.get('/biblia', async (req, res) => {
+            if (!req.secure) {
+                res.redirect("https://" + req.headers.host + req.url);
 
-    })
+            } else {
+                VisitCount.add(req);
 
-    app.get('/biblia/:abbrev/:chapter/', async (req, res) => {
-        if (!req.secure) {
-            res.redirect("https://" + req.headers.host + req.url);
+                const booksModel = new BooksModel();
+                const books = await booksModel.run();
+                res.send(books);
+            }
+        })
 
-        } else {
-            const versesModel = new VersesModel();
-            const book = await versesModel.run(req.params.abbrev, req.params.chapter);
-            res.send(book);
-        }
+        app.get('/biblia/:abbrev', async (req, res) => {
+            if (!req.secure) {
+                res.redirect("https://" + req.headers.host + req.url);
 
-    })
+            } else {
+                VisitCount.add(req);
 
-    app.get('/biblia/:book/:chapter/:number', async (req, res) => {
-        if (!req.secure) {
-            res.redirect("https://" + req.headers.host + req.url);
+                const bookModel = new BookModel();
+                const book = await bookModel.run(req.params.abbrev);
+                res.send(book);
+            }
 
-        } else {
-            const verseModel = new VerseModel();
-            const verse = await verseModel.run(req.params.book, req.params.chapter,
-                req.params.number);
-            res.send(verse);
-        }
+        })
 
-    })
+        app.get('/biblia/:abbrev/:chapter/', async (req, res) => {
+            if (!req.secure) {
+                res.redirect("https://" + req.headers.host + req.url);
+
+            } else {
+                VisitCount.add(req);
+
+                const versesModel = new VersesModel();
+                const book = await versesModel.run(req.params.abbrev, req.params.chapter);
+                res.send(book);
+            }
+
+        })
+
+        app.get('/biblia/:book/:chapter/:number', async (req, res) => {
+            if (!req.secure) {
+                VisitCount.add(req);
+
+                res.redirect("https://" + req.headers.host + req.url);
+
+            } else {
+                const verseModel = new VerseModel();
+                const verse = await verseModel.run(req.params.book, req.params.chapter,
+                    req.params.number);
+                res.send(verse);
+            }
+
+        })
+
+    } catch (error) {
+        console.log(error);
+    }
+
 }
